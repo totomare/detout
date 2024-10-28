@@ -1,3 +1,5 @@
+// Credit : https://learntypescript.dev
+
 const name = "Bob";
 console.log("Type of name:", typeof name);
 

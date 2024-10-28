@@ -1,3 +1,5 @@
+// Credit : https://learntypescript.dev
+
 type VisitsData = {
   visits: Array<{
     page: {

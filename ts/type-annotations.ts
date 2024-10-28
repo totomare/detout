@@ -1,3 +1,4 @@
+// Credit : https://learntypescript.dev
 
 // We can also add a type annotation for the return value by adding a colon followed by the type after the function's parentheses
 function add(a: number, b: number): number {

@@ -51,5 +51,54 @@ Then ("confirm that the column headings are exactly what we expect", (data: Data
             for (var i in itemsFound) {
                 expect(itemsFound[i]).to.equal(expectedHeader[i]);
             }
+			
+			 //validation pour les objets entiers
+            assert.deepEqual(itemsFound, expectedHeader);
+        })
+})
+
+Then ("version 2, confirm that the column headings are exactly what we expect", (data: DataTable) => {
+    const expectedData = data.hashes();
+
+    console.log("  --> expectedData: ", expectedData)
+    /* expectedData
+            [
+                {HEADER: 'Nom', ICON: ''},
+                {HEADER: 'Users', ICON: ''},
+                {HEADER: 'Items', ICON: 'glyphicon glyphicon-cloud'},
+                {HEADER: 'Dates', ICON: ''},
+                {HEADER: 'Duration', ICON: ''},
+                {HEADER: 'Projects', ICON: ''} 
+            ]   
+
+        const index0Name = expectedData[0]['HEADER'];
+        const index2Icon = expectedData[2]['ICON'];
+        console.log("  ---> index0Name: "+index0Name+"  ---> index2Icon: "+index2Icon)  
+        LOG: ---> index0Name: Nom ---> index2Icon: glyphicon glyphicon-cloud
+    */
+
+    cy.get('table thead th')
+        .should('have.length',6)  
+        .then(console.log)
+        .then((currentSubject) => {
+           
+
+            for (let i = 0; i < currentSubject.length ; i++) {
+                // parcurrir les elements JQuery<HTMLElement> et valider le contenu du DataTable
+                let expectedHeader: string = expectedData[i]['HEADER'];
+                let headerFound: string =  currentSubject[i].innerText
+
+                if (expectedHeader) {
+                    expect(expectedHeader).to.equal(headerFound);
+                }
+                
+                // valider l'icône associé au header
+                let iconHeader: string = expectedData[i]['ICON'];
+
+                if (iconHeader) {
+                    cy.wrap(currentSubject[i].getHTML()).get('i').should('have.class', `${iconHeader}`)
+                }
+            }
+
         })
 })

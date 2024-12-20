@@ -3,4 +3,4 @@ Feature: The Sauce - lesson 02
 
   Scenario: Confirm the lowest price in the store
     When I open the page The Sauce 
-    Then I confirm the lowest price in the store - version 1
+    Then I confirm the lowest price in the store 7.99 - version 1

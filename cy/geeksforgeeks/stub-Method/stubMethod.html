@@ -1,0 +1,37 @@
+<!-- Credit : https://www.geeksforgeeks.org/cypress-stub-method/ -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <title>
+   Example 1
+        </title>
+    </head>
+    <body>
+        <button id="clickMeBasic">Basic - Click Me to view Alert</button>
+        </br></br>
+        <button id="clickMeCustom">Custom - Click Me to view Message</button>
+        <script>
+            var myBasicApp = {
+                        showAlert() {
+                            alert('Original alert!');
+                        }
+                    };
+
+            document.getElementById('clickMeBasic').addEventListener('click', () => {
+                myBasicApp.showAlert();
+            });
+
+            var myCustomApp = {
+                logMessage(message) {
+                    console.log('Original message:', message);
+                }
+            }; 
+
+            document.getElementById('clickMeCustom').addEventListener('click', () => {
+                myCustomApp.logMessage('Hello, World!');
+            });
+        </script>
+    </body>
+</html>

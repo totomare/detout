@@ -15,7 +15,7 @@ Then ("I confirm that these two lists have identical items", () => {
                     return htmlElement.innerText
                 })
                 console.log(' --> firstHtmlElementList',firstHtmlElementList)
-                
+            // test 01    
             cy.get('#second li')
               .then((arraySecondList) => Cypress._.map(arraySecondList, (htmlElement) => {
                         return htmlElement.innerText
